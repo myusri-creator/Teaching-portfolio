@@ -1,0 +1,2895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teaching Portfolio · Ts. Dr. Mohd Yusri Jusoh</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #1a2e5c;
+            --primary-light: #2a4a8a;
+            --primary-dark: #0f1f3d;
+            --accent: #f5a623;
+            --accent-light: #f7c35a;
+            --bg: #f2f6fe;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow: 0 8px 32px rgba(0, 20, 50, 0.08);
+            --shadow-hover: 0 16px 48px rgba(0, 20, 50, 0.14);
+            --radius: 2rem;
+            --radius-sm: 1.2rem;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: #1a2639;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 10% 20%, rgba(26, 46, 92, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(245, 166, 35, 0.04) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eef2f9;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+
+        /* ===== PROFILE CARD ===== */
+        .profile-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius);
+            padding: 1.8rem 2.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2.8rem;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+        .profile-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        .profile-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(26, 46, 92, 0.2);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+        .profile-text h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.02em;
+        }
+        .profile-text h1 span {
+            font-weight: 400;
+            color: var(--primary-light);
+        }
+        .profile-text .title {
+            font-size: 0.95rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.2rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(26, 46, 92, 0.2);
+        }
+        .profile-text .affiliation {
+            font-size: 0.9rem;
+            color: #4a638a;
+            margin-top: 0.2rem;
+        }
+        .profile-right {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: rgba(238, 244, 252, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: var(--transition);
+        }
+        .badge:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        .badge i {
+            color: var(--accent);
+        }
+        .badge a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* ===== HERO ===== */
+        .hero-with-bg {
+            position: relative;
+            border-radius: var(--radius);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(26, 46, 92, 0.15);
+        }
+        .hero-with-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-with-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 40%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        .hero-with-bg h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .hero-with-bg .highlight {
+            background: rgba(245, 166, 35, 0.2);
+            color: var(--accent-light);
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .hero-with-bg .hero-tagline {
+            font-size: 1.15rem;
+            margin: 0.6rem 0 0.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+        .hero-contact span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: var(--transition);
+        }
+        .hero-contact span:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .hero-contact i {
+            color: var(--accent-light);
+            width: 1.2rem;
+        }
+
+        /* ===== TAB NAVIGATION ===== */
+        .tab-nav {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 0.4rem 0.6rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow);
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #4a638a;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            position: relative;
+        }
+        .tab-btn i {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 16px rgba(26, 46, 92, 0.25);
+        }
+        .tab-btn.active i {
+            opacity: 1;
+        }
+        .tab-btn:hover:not(.active) {
+            background: rgba(26, 46, 92, 0.06);
+            color: var(--primary);
+        }
+        .tab-btn:hover:not(.active) i {
+            opacity: 1;
+        }
+
+        /* ===== PANELS ===== */
+        .tab-panel {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(16px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== CARDS & GRID ===== */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-top: 0.8rem;
+        }
+        .grid-2col-about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.8rem;
+        }
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: var(--radius);
+            padding: 1.8rem 2rem 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(26, 46, 92, 0.1);
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .card h3 .card-icon {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-top: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .card .meta {
+            font-size: 0.8rem;
+            color: #4a638a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .card .meta i {
+            color: var(--accent);
+            width: 1.2rem;
+        }
+        .card p,
+        .card li {
+            color: #2a3f62;
+            font-size: 0.95rem;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card ul li {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+        .card ul li i {
+            color: var(--accent);
+            width: 1.2rem;
+            margin-top: 0.15rem;
+            font-size: 0.85rem;
+        }
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.6rem 0 0.2rem;
+        }
+        .tag {
+            background: rgba(26, 46, 92, 0.06);
+            color: var(--primary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            letter-spacing: 0.02em;
+            border: 1px solid rgba(26, 46, 92, 0.06);
+            transition: var(--transition);
+        }
+        .tag:hover {
+            background: rgba(26, 46, 92, 0.12);
+        }
+        .icon-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .icon-list span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: #1a2f4a;
+            background: rgba(26, 46, 92, 0.04);
+            padding: 0.2rem 0.8rem 0.2rem 0.5rem;
+            border-radius: 30px;
+        }
+        .icon-list i {
+            color: var(--accent);
+            width: 1.2rem;
+        }
+        .download-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(26, 46, 92, 0.04);
+            border-radius: 40px;
+            margin-bottom: 0.4rem;
+            border: 1px solid rgba(26, 46, 92, 0.06);
+            transition: var(--transition);
+        }
+        .download-item:hover {
+            background: rgba(26, 46, 92, 0.08);
+        }
+        .download-item i {
+            color: var(--accent);
+            font-size: 1rem;
+            width: 1.6rem;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid rgba(26, 46, 92, 0.06);
+        }
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .section-header i {
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-item {
+            border-bottom: 1px solid rgba(26, 46, 92, 0.06);
+            padding: 0.8rem 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-dark);
+            transition: var(--transition);
+            padding: 0.2rem 0;
+        }
+        .faq-question:hover {
+            color: var(--primary-light);
+        }
+        .faq-question i {
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 0.5rem;
+            color: #4a638a;
+            font-size: 0.9rem;
+        }
+        .faq-answer.open {
+            max-height: 300px;
+            padding: 0.6rem 0.5rem 0.2rem;
+        }
+        .faq-question .fa-chevron-down {
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+        .faq-question .fa-chevron-down.open {
+            transform: rotate(180deg);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .contact-form .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .contact-form label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+        }
+        .contact-form label i {
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.7rem 1rem;
+            border-radius: 0.8rem;
+            border: 1px solid rgba(26, 46, 92, 0.15);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 46, 92, 0.06);
+            background: white;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            align-self: flex-start;
+            box-shadow: 0 4px 16px rgba(26, 46, 92, 0.2);
+        }
+        .contact-form .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(26, 46, 92, 0.3);
+        }
+        .contact-form .submit-btn i {
+            color: var(--accent-light);
+        }
+
+        /* ===== RESEARCH PORTFOLIO ===== */
+        .research-portfolio-header {
+            text-align: center;
+            padding: 2.5rem 2rem 2rem;
+            background: linear-gradient(135deg, rgba(26, 46, 92, 0.04), rgba(245, 166, 35, 0.04));
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+        }
+        .research-portfolio-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .research-portfolio-header .subtitle {
+            font-size: 1.05rem;
+            color: #4a638a;
+            max-width: 700px;
+            margin: 0.5rem auto 0;
+        }
+        .research-portfolio-header .central-query {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 0.8rem;
+            border: 1px solid var(--glass-border);
+        }
+        .strategy-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem;
+        }
+        .strategy-box {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-sm);
+            padding: 1.2rem 1.8rem;
+            border: 1px solid var(--glass-border);
+            flex: 1 1 200px;
+            max-width: 280px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .strategy-box:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        .strategy-box .strategy-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+        .strategy-box .strategy-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1rem;
+        }
+        .strategy-box .strategy-desc {
+            font-size: 0.85rem;
+            color: #4a638a;
+            margin-top: 0.2rem;
+        }
+        .publication-list {
+            margin-top: 0.5rem;
+        }
+        .pub-item-research,
+        .pub-item-teaching {
+            padding: 0.5rem 0.8rem;
+            border-bottom: 1px solid rgba(26, 46, 92, 0.06);
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            transition: var(--transition);
+        }
+        .pub-item-research:last-child,
+        .pub-item-teaching:last-child {
+            border-bottom: none;
+        }
+        .pub-item-research:hover,
+        .pub-item-teaching:hover {
+            background: rgba(26, 46, 92, 0.02);
+            border-radius: 0.6rem;
+        }
+        .pub-item-research .pub-num,
+        .pub-item-teaching .pub-num {
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 2.2rem;
+            font-size: 0.8rem;
+        }
+        .pub-item-research .pub-content,
+        .pub-item-teaching .pub-content {
+            font-size: 0.9rem;
+            color: #1a2f4a;
+        }
+        .pub-item-research .pub-content strong,
+        .pub-item-teaching .pub-content strong {
+            color: var(--primary-dark);
+        }
+        .pub-item-research .pub-meta,
+        .pub-item-teaching .pub-meta {
+            font-size: 0.75rem;
+            color: #4a638a;
+            display: block;
+        }
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.4rem;
+        }
+        .research-strategy-section {
+            margin-bottom: 2rem;
+        }
+        .research-strategy-section h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid rgba(26, 46, 92, 0.06);
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+        .research-strategy-section h3 i {
+            color: var(--accent);
+        }
+
+        /* ===== BOOKS DISPLAY ===== */
+        .books-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            padding: 0.5rem 0;
+        }
+        .book-item {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            min-width: 150px;
+            flex: 1 0 auto;
+            max-width: 200px;
+            transition: var(--transition);
+        }
+        .book-item:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+        .book-item .book-icon {
+            font-size: 2.4rem;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+        .book-item .book-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+        .book-item .book-author {
+            font-size: 0.7rem;
+            color: #4a638a;
+            margin-top: 0.2rem;
+        }
+        .books-section {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        .books-section h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+        .books-section h4 i {
+            color: var(--accent);
+        }
+
+        /* ===== TEACHING PORTFOLIO ===== */
+        .teaching-portfolio-header {
+            text-align: center;
+            padding: 2.5rem 2rem 2rem;
+            background: linear-gradient(135deg, rgba(26, 46, 92, 0.04), rgba(245, 166, 35, 0.04));
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+        }
+        .teaching-portfolio-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .teaching-portfolio-header .subtitle {
+            font-size: 1.05rem;
+            color: #4a638a;
+            max-width: 700px;
+            margin: 0.5rem auto 0;
+        }
+        .teaching-portfolio-header .central-query {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 0.8rem;
+            border: 1px solid var(--glass-border);
+        }
+        .teaching-strategy-section {
+            margin-bottom: 2rem;
+        }
+        .teaching-strategy-section h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid rgba(26, 46, 92, 0.06);
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+        .teaching-strategy-section h3 i {
+            color: var(--accent);
+        }
+
+        /* ===== ABOUT ME ===== */
+        .about-section {
+            margin-bottom: 2.2rem;
+        }
+        .about-section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            border-bottom: 2px solid rgba(26, 46, 92, 0.06);
+            padding-bottom: 0.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .about-section h2 i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        .about-section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-top: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .about-section .meta-info {
+            font-size: 0.85rem;
+            color: #4a638a;
+            margin-bottom: 0.3rem;
+        }
+        .about-section .meta-info i {
+            width: 1.2rem;
+            color: var(--accent);
+        }
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+        .badge-list .badge {
+            background: rgba(26, 46, 92, 0.06);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid rgba(26, 46, 92, 0.06);
+        }
+        .badge-list .badge i {
+            color: var(--accent);
+        }
+        .award-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-sm);
+            padding: 0.8rem 1.2rem;
+            margin-bottom: 0.6rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .award-item:hover {
+            transform: translateX(4px);
+            border-color: var(--accent);
+        }
+        .award-item .award-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .award-item .award-meta {
+            font-size: 0.8rem;
+            color: #4a638a;
+        }
+        .pub-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(26, 46, 92, 0.06);
+        }
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+        .pub-item .pub-title {
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+        .pub-item .pub-meta {
+            font-size: 0.8rem;
+            color: #4a638a;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.2rem;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid var(--glass-border);
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .stat-label {
+            color: #4a638a;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .contact-links a {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 60px;
+            padding: 0.5rem 1.4rem;
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .contact-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .contact-links a i {
+            color: var(--accent);
+        }
+        .contact-links a:hover i {
+            color: white;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-sm);
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            border: 1px dashed rgba(26, 46, 92, 0.15);
+            color: #2c4b7a;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        .gallery-item:hover {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--accent);
+            transform: scale(1.03);
+        }
+        .gallery-item i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--accent);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-note {
+            margin-top: 4rem;
+            text-align: center;
+            color: #5e7a9e;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(26, 46, 92, 0.06);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-note i {
+            color: var(--accent);
+        }
+
+        /* ===== CHATBOT ===== */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            box-shadow: 0 8px 32px rgba(26, 46, 92, 0.35);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .chatbot-toggle::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(245, 166, 35, 0.3);
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 40px rgba(26, 46, 92, 0.4);
+        }
+        .chatbot-container {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            max-width: 85vw;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-radius: var(--radius);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .chatbot-container.open {
+            display: flex;
+        }
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chatbot-header h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .chatbot-header h4 i {
+            color: var(--accent-light);
+        }
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        .chatbot-close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem 1.2rem;
+            overflow-y: auto;
+            background: rgba(242, 246, 254, 0.5);
+        }
+        .chatbot-message {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            animation: fadeUp 0.3s ease;
+        }
+        .chatbot-message.bot {
+            justify-content: flex-start;
+        }
+        .chatbot-message.user {
+            justify-content: flex-end;
+        }
+        .chatbot-message .bubble {
+            max-width: 82%;
+            padding: 0.6rem 1rem;
+            border-radius: 1.2rem;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            word-break: break-word;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .chatbot-message.bot .bubble {
+            background: white;
+            border: 1px solid var(--glass-border);
+            color: #1a2f4a;
+            border-bottom-left-radius: 0.2rem;
+        }
+        .chatbot-message.user .bubble {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-bottom-right-radius: 0.2rem;
+        }
+        .chatbot-message .avatar-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(26, 46, 92, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .chatbot-message.user .avatar-icon {
+            background: var(--primary);
+            color: white;
+        }
+        .chatbot-input-area {
+            display: flex;
+            padding: 0.6rem 1rem;
+            border-top: 1px solid rgba(26, 46, 92, 0.06);
+            background: white;
+            gap: 0.5rem;
+        }
+        .chatbot-input-area input {
+            flex: 1;
+            border: 1px solid rgba(26, 46, 92, 0.1);
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            outline: none;
+            transition: var(--transition);
+            background: rgba(242, 246, 254, 0.5);
+        }
+        .chatbot-input-area input:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(26, 46, 92, 0.06);
+        }
+        .chatbot-input-area button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chatbot-input-area button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(26, 46, 92, 0.25);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .grid-2col-about {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+            .strategy-box {
+                flex: 1 1 140px;
+                max-width: 200px;
+            }
+            .hero-with-bg {
+                padding: 2rem 1.5rem;
+                min-height: 200px;
+            }
+            .hero-contact span {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.8rem;
+            }
+            .profile-card {
+                padding: 1.5rem;
+            }
+            .profile-text h1 {
+                font-size: 1.6rem;
+            }
+            .tab-nav {
+                border-radius: 30px;
+                padding: 0.4rem;
+                gap: 0.2rem;
+            }
+            .tab-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.7rem;
+            }
+            .tab-btn i {
+                font-size: 0.7rem;
+            }
+            .chatbot-container {
+                width: 90vw;
+                height: 420px;
+                right: -5vw;
+            }
+            .contact-form .submit-btn {
+                align-self: stretch;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            .profile-left {
+                gap: 1rem;
+            }
+            .avatar {
+                width: 64px;
+                height: 64px;
+                font-size: 1.5rem;
+            }
+            .hero-with-bg {
+                padding: 1.5rem 1.2rem;
+                min-height: 160px;
+            }
+            .hero-with-bg h2 {
+                font-size: 1.3rem;
+            }
+            .hero-with-bg .hero-tagline {
+                font-size: 1rem;
+            }
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .grid-3col {
+                grid-template-columns: 1fr;
+            }
+            .books-display {
+                gap: 0.8rem;
+            }
+            .book-item {
+                min-width: 100px;
+                max-width: 140px;
+                padding: 0.8rem;
+            }
+            .strategy-box {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            .research-portfolio-header,
+            .teaching-portfolio-header {
+                padding: 1.5rem 1rem;
+            }
+            .research-portfolio-header .central-query,
+            .teaching-portfolio-header .central-query {
+                font-size: 1rem;
+                padding: 0.4rem 1rem;
+            }
+            .stats {
+                gap: 1rem;
+            }
+            .stat-item {
+                padding: 0.3rem 1rem;
+            }
+            .stat-number {
+                font-size: 1.4rem;
+            }
+            .stat-label {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ============================================================ -->
+        <!-- PROFILE CARD                                                   -->
+        <!-- ============================================================ -->
+        <div class="profile-card">
+            <div class="profile-left">
+                <div class="avatar">MY</div>
+                <div class="profile-text">
+                    <h1>Ts. Dr. Mohd Yusri <span>Jusoh</span></h1>
+                    <div class="title"><i class="fas fa-chalkboard-teacher" style="margin-right:6px;"></i> Senior Lecturer, DS13</div>
+                    <div class="affiliation"><i class="fas fa-university" style="margin-right:4px; color:var(--accent);"></i> Dept. of Library &amp; Information Science · Faculty of Arts &amp; Social Sciences · Universiti Malaya</div>
+                </div>
+            </div>
+            <div class="profile-right">
+                <span class="badge"><i class="fas fa-envelope"></i> myusri@um.edu.my</span>
+                <span class="badge"><i class="fas fa-phone"></i> 012-9608084</span>
+                <span class="badge"><i class="fas fa-graduation-cap"></i> <a href="#">Google Scholar</a></span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB NAVIGATION                                                -->
+        <!-- ============================================================ -->
+        <div class="tab-nav" id="tabNav">
+            <button class="tab-btn active" data-tab="home"><i class="fas fa-home"></i> Home</button>
+            <button class="tab-btn" data-tab="about"><i class="fas fa-user"></i> About Me</button>
+            <button class="tab-btn" data-tab="teaching-philosophy"><i class="fas fa-book-open"></i> Teaching Philosophy</button>
+            <button class="tab-btn" data-tab="teaching-methods"><i class="fas fa-chalkboard-teacher"></i> Teaching Methods &amp; Responsibilities</button>
+            <button class="tab-btn" data-tab="innovations"><i class="fas fa-lightbulb"></i> Innovations &amp; Creativity</button>
+            <button class="tab-btn" data-tab="feedback"><i class="fas fa-comment-dots"></i> Teaching Feedback &amp; Reflections</button>
+            <button class="tab-btn" data-tab="supervision"><i class="fas fa-users"></i> Academic Supervision &amp; Advisory</button>
+            <button class="tab-btn" data-tab="consultations"><i class="fas fa-handshake"></i> Consultations, Publications &amp; Awards</button>
+            <button class="tab-btn" data-tab="research-portfolio"><i class="fas fa-flask"></i> Research</button>
+            <button class="tab-btn" data-tab="leadership-admin"><i class="fas fa-tasks"></i> Leadership &amp; Administration</button>
+            <button class="tab-btn" data-tab="gallery"><i class="fas fa-images"></i> Gallery</button>
+            <button class="tab-btn" data-tab="contact"><i class="fas fa-paper-plane"></i> Contact</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 1: HOME                                                 -->
+        <!-- ============================================================ -->
+        <div id="home" class="tab-panel active">
+            <div class="hero-with-bg">
+                <div class="hero-content">
+                    <h2><i class="fas fa-home" style="color:var(--accent-light);"></i> Welcome to My E-Teaching Portfolio</h2>
+                    <p class="hero-tagline" style="font-size:1.1rem;">
+                        "Don't look for miracles. YOU yourself are the miracle." 
+                        <span style="display:block; font-size:0.9rem; font-weight:300; margin-top:0.2rem;">— Henry Miller</span>
+                    </p>
+                    <p style="color:rgba(255,255,255,0.85); margin-top:0.5rem;">
+                        I teach, I touch the future. This portfolio is a reflection of my journey as an academician, 
+                        dedicated to nurturing human-centred, AI-driven learning experiences.
+                    </p>
+                    <div class="hero-contact">
+                        <span><i class="fas fa-envelope"></i> myusri@um.edu.my</span>
+                        <span><i class="fas fa-phone"></i> 012-9608084</span>
+                        <span><i class="fas fa-university"></i> Universiti Malaya</span>
+                        <span><i class="fas fa-graduation-cap"></i> Google Scholar</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2col" style="margin-top:1.8rem;">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-user-graduate"></i></span> About Me</h3>
+                    <p>Ts. Dr. Mohd Yusri bin Jusoh is a Senior Lecturer (DS13) at the Department of Library and Information Science, Faculty of Arts and Social Sciences, Universiti Malaya. His teaching and research interests include digital literacy, artificial intelligence literacy, data analytics, information management, and sustainable digital transformation.</p>
+                    <p style="margin-top:0.5rem;">Prior to joining academia, he served in various information technology and digital transformation roles in the Malaysian public sector for more than 15 years.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-book-open"></i></span> Teaching Philosophy</h3>
+                    <p>I believe learning should be <strong>student-centred, practical, and technology-enabled</strong>. Meaningful learning occurs when students actively engage with authentic problems, collaborate with peers, and apply knowledge through hands-on experiences.</p>
+                    <div class="tag-group">
+                        <span class="tag"><i class="fas fa-check-circle" style="margin-right:4px; color:var(--accent);"></i> Active Learning</span>
+                        <span class="tag"><i class="fas fa-check-circle" style="margin-right:4px; color:var(--accent);"></i> PBL</span>
+                        <span class="tag"><i class="fas fa-check-circle" style="margin-right:4px; color:var(--accent);"></i> Collaborative</span>
+                        <span class="tag"><i class="fas fa-check-circle" style="margin-right:4px; color:var(--accent);"></i> AI-assisted</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-star"></i></span> Teaching Impact</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Student-centred learning</li>
+                        <li><i class="fas fa-check-circle"></i> Authentic assessments</li>
+                        <li><i class="fas fa-check-circle"></i> Technology-enhanced learning</li>
+                        <li><i class="fas fa-check-circle"></i> Project-based learning</li>
+                        <li><i class="fas fa-check-circle"></i> Continuous reflection &amp; improvement</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-flask"></i></span> Research &amp; Scholarship</h3>
+                    <p>Research focuses on:</p>
+                    <div class="tag-group">
+                        <span class="tag">Digital Literacy</span>
+                        <span class="tag">AI Literacy</span>
+                        <span class="tag">Data Analytics</span>
+                        <span class="tag">Information Management</span>
+                        <span class="tag">Sustainable Computing</span>
+                    </div>
+                    <div style="margin-top:0.8rem;">
+                        <span class="badge"><i class="fas fa-certificate" style="color:var(--accent);"></i> Professional Technologist (Ts.)</span>
+                        <span class="badge"><i class="fab fa-google" style="color:var(--accent);"></i> Google Certified Educator</span>
+                        <span class="badge"><i class="fas fa-robot" style="color:var(--accent);"></i> Gemini Certified Educator</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 2: ABOUT ME                                             -->
+        <!-- ============================================================ -->
+        <div id="about" class="tab-panel">
+            <div class="grid-2col-about">
+                <div class="about-section">
+                    <h2><i class="fas fa-user-graduate"></i> Background</h2>
+                    <p>Ts. Dr. Mohd Yusri bin Jusoh is a Senior Lecturer (DS13) at the Department of Library and Information Science, Faculty of Arts and Social Sciences, Universiti Malaya. His teaching and research interests include digital literacy, artificial intelligence literacy, data analytics, information management, sustainable computing, and digital transformation.</p>
+                    <p style="margin-top:0.6rem;">Prior to joining academia, he served in various information technology and digital transformation roles in the Malaysian public sector for more than 15 years, including positions at MAMPU (now JDN), KeTTHA, and INTAN.</p>
+                    <div style="margin-top:1.2rem;">
+                        <div class="badge-list">
+                            <span class="badge"><i class="fas fa-certificate"></i> Professional Technologist (PT23100107)</span>
+                            <span class="badge"><i class="fab fa-google"></i> Google Certified Educator</span>
+                            <span class="badge"><i class="fas fa-robot"></i> Gemini Certified Educator</span>
+                            <span class="badge"><i class="fas fa-project-diagram"></i> CompTIA Project+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-section">
+                    <h2><i class="fas fa-university"></i> Education</h2>
+                    <h3><i class="fas fa-graduation-cap" style="color:var(--accent); margin-right:6px;"></i> PhD in Information Technology</h3>
+                    <div class="meta-info"><i class="fas fa-calendar-alt"></i> 2016–2023 – Universiti Teknologi MARA (UiTM), Shah Alam</div>
+                    <p>Thesis: <em>A Framework of Green End-User Computing Through Virtualization Approach</em></p>
+                    <p style="font-size:0.85rem; color:#4a638a;">Senate date: 4 April 2023 · Graduation: 18 November 2023</p>
+                    <h3><i class="fas fa-graduation-cap" style="color:var(--accent); margin-right:6px;"></i> MSc in Information Technology</h3>
+                    <div class="meta-info"><i class="fas fa-calendar-alt"></i> 2012–2014 – Universiti Teknologi MARA (UiTM), Shah Alam</div>
+                    <p>Dissertation: <em>Evaluating Performance of Green Computing using Thin Client Technology</em></p>
+                    <p style="font-size:0.85rem; color:#4a638a;">CGPA: 3.87 · Excellent Candidate Award</p>
+                    <h3><i class="fas fa-graduation-cap" style="color:var(--accent); margin-right:6px;"></i> BSc in Information Technology (Honours) - AI</h3>
+                    <div class="meta-info"><i class="fas fa-calendar-alt"></i> 2005–2008 – Universiti Kebangsaan Malaysia (UKM), Bangi</div>
+                    <p>Final Year Project: <em>Jawi Pattern Recognition Using Feature Zoning and Direction</em></p>
+                    <p style="font-size:0.85rem; color:#4a638a;">CGPA: 3.27</p>
+                </div>
+            </div>
+            <div class="about-section" style="margin-top:1.5rem;">
+                <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.8rem;">
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0;">Senior Lecturer, DS13</h4>
+                        <div class="meta-info"><i class="fas fa-calendar-alt"></i> Oct 2025 – present · Universiti Malaya</div>
+                        <p style="font-size:0.9rem;"><strong>Subjects:</strong> AQC7005, AQC7018, AQC7011, AIP3001, AIP3002, AIP3003, Web Publishing, Data Visualization, Research Project.</p>
+                    </div>
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0;">Training Consultant, F10</h4>
+                        <div class="meta-info"><i class="fas fa-calendar-alt"></i> Oct 2019 – Oct 2025 · INTAN, JPA</div>
+                        <p style="font-size:0.9rem;"><strong>Subjects:</strong> Introduction to AI, ICT Project Management, Data Analytic, Agile PM, Green Data Center.</p>
+                    </div>
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0;">IT Officer, F41</h4>
+                        <div class="meta-info"><i class="fas fa-calendar-alt"></i> 2015–2019 · MAMPU (now JDN)</div>
+                        <p style="font-size:0.9rem;">HLP/CBIBPTB – Study Leave (PhD in IT - Governance).</p>
+                    </div>
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0;">IT Officer, F41</h4>
+                        <div class="meta-info"><i class="fas fa-calendar-alt"></i> 2012–2015 · KeTTHA (now KUSKOP)</div>
+                        <p style="font-size:0.9rem;">Operations Unit. Green Data Center, Thin Client, Green Procurement, ICT Procurement.</p>
+                    </div>
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0;">IT Officer</h4>
+                        <div class="meta-info"><i class="fas fa-calendar-alt"></i> 2010–2012 · Kementerian Perumahan &amp; Kerajaan Tempatan</div>
+                        <p style="font-size:0.9rem;">ePBT System.</p>
+                    </div>
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0;">Solution Architect</h4>
+                        <div class="meta-info"><i class="fas fa-calendar-alt"></i> 2009–2010 · Telekom Malaysia</div>
+                        <p style="font-size:0.9rem;">High Speed Broadband (HSBB) Project.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-section" style="margin-top:1.5rem;">
+                <h2><i class="fas fa-microscope"></i> Research Interests</h2>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.8rem;">
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0; color:var(--primary);"><i class="fas fa-users" style="color:var(--accent);"></i> Digital Literacy &amp; Information Systems</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Digital Literacy and Information Literacy</li>
+                            <li><i class="fas fa-check-circle"></i> Information Systems &amp; Digital Transformation</li>
+                            <li><i class="fas fa-check-circle"></i> Artificial Intelligence (AI) in Education</li>
+                            <li><i class="fas fa-check-circle"></i> ICT Adoption, Governance and Digital Transformation</li>
+                            <li><i class="fas fa-check-circle"></i> Digital Government Strategy &amp; ICT Governance</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="padding:1.2rem 1.5rem;">
+                        <h4 style="margin-top:0; color:var(--primary);"><i class="fas fa-leaf" style="color:var(--accent);"></i> Sustainable Computing</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Data Analytics, Data Mining &amp; Data Visualization</li>
+                            <li><i class="fas fa-check-circle"></i> AI Applications in Education &amp; Public Sector</li>
+                            <li><i class="fas fa-check-circle"></i> Green Computing &amp; Sustainable IT</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="about-section" style="margin-top:1.5rem;">
+                <h2><i class="fas fa-trophy"></i> Awards &amp; Achievements</h2>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.2rem;">
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-award" style="color:var(--accent);"></i> Anugerah Karya Dikara</div>
+                        <div class="award-meta">INTAN, 2024</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-medal" style="color:var(--accent);"></i> Excellent Service Award (APC)</div>
+                        <div class="award-meta">JPA, 2021</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-medal" style="color:var(--accent);"></i> Bronze Award</div>
+                        <div class="award-meta">Invention, Innovation &amp; Design Exposition 2015</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-star" style="color:var(--accent);"></i> Excellent Candidate Award</div>
+                        <div class="award-meta">MSc IT, UiTM (CGPA 3.87)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 3: TEACHING PHILOSOPHY                                  -->
+        <!-- ============================================================ -->
+        <div id="teaching-philosophy" class="tab-panel">
+            <div class="teaching-portfolio-header">
+                <h2>📖 Teaching Philosophy</h2>
+                <p class="subtitle">"Develop a passion for learning. If you do, you will never cease to grow." — Anthony J. D'Angelo</p>
+            </div>
+            <div class="card">
+                <h3><span class="card-icon"><i class="fas fa-heart"></i></span> My Teaching Philosophy</h3>
+                <p style="font-size:1.05rem; color:var(--primary-dark);">"It's got to be engaging."</p>
+                <p style="margin-top:0.8rem;">Learning requires students to actively engage during lectures and develop skills through lots of practice and solving application problems. It is essential to provide fun and interactive learning experiences through different styles of teaching methods by incorporating the utilization of technology in enhancing student learning.</p>
+                <p style="margin-top:0.6rem;">I encourage peer learning among students during lectures because I believe that peer learning is the best method to improve students' academic performance. This is because peers can provide a great influence on each other's activities. I motivate them to solve the problem independently at the end of the lecture by shifting more responsibility to students for their learning instead of one-way teaching.</p>
+                <div style="margin-top:1rem; background:rgba(245,166,35,0.08); padding:1rem 1.5rem; border-radius:1rem; border-left:4px solid var(--accent);">
+                    <p style="font-style:italic; color:#1a2f4a;">"Learning happens when you trap a student in an environment where they can't escape without thinking."</p>
+                </div>
+                <div class="tag-group" style="margin-top:1rem;">
+                    <span class="tag">Active Learning</span>
+                    <span class="tag">Collaborative Learning</span>
+                    <span class="tag">Cooperative Learning</span>
+                    <span class="tag">Peer Learning</span>
+                    <span class="tag">Student-Centred</span>
+                    <span class="tag">Technology-Enhanced</span>
+                </div>
+            </div>
+            <div class="grid-2col" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-users"></i></span> Engaging Students</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Implementing Active Learning, Collaborative Learning and Cooperative Learning</li>
+                        <li><i class="fas fa-check-circle"></i> Activities designed for active involvement in the learning process</li>
+                        <li><i class="fas fa-check-circle"></i> Wide variety of materials and methods to make classroom experience interesting</li>
+                        <li><i class="fas fa-check-circle"></i> Creating an engaging classroom by implementing various teaching methods</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-robot"></i></span> Technology in Teaching</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Incorporating technology to craft powerful collaborative and active learning environments</li>
+                        <li><i class="fas fa-check-circle"></i> Customizing learning experiences through technology</li>
+                        <li><i class="fas fa-check-circle"></i> Students are "youth and playful", they want to be engaged</li>
+                        <li><i class="fas fa-check-circle"></i> Using AI tools to enhance teaching and learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 4: TEACHING METHODS & RESPONSIBILITIES                  -->
+        <!-- ============================================================ -->
+        <div id="teaching-methods" class="tab-panel">
+            <div class="teaching-portfolio-header">
+                <h2>🧑‍🏫 Teaching Methods &amp; Responsibilities</h2>
+                <p class="subtitle">"If you take responsibility for yourself you will develop a hunger to accomplish your dreams." — Les Brown</p>
+            </div>
+            <div class="card">
+                <h3><span class="card-icon"><i class="fas fa-list"></i></span> Courses Taught (Based on CV)</h3>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;">
+                    <div>
+                        <h4 style="margin-top:0;">Postgraduate</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>AQC7005</strong> – Technologies for Information Management</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>AQC7018</strong> – Library &amp; Information Science Research Project</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>AQC7011</strong> – Web Publishing</li>
+                        </ul>
+                        <h4 style="margin-top:0.8rem;">Undergraduate</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>AIP3001</strong> – Data Analytics for Information Management</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>AIP3002</strong> – Data Mining for Social Sciences</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>AIP3003</strong> – Data Visualization</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-top:0;">Public Sector Training (INTAN, 2019–2025)</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Introduction to Artificial Intelligence (AI)</li>
+                            <li><i class="fas fa-check-circle"></i> ICT Project Management</li>
+                            <li><i class="fas fa-check-circle"></i> Data Analytic</li>
+                            <li><i class="fas fa-check-circle"></i> Agile Project Management</li>
+                            <li><i class="fas fa-check-circle"></i> Green Data Center</li>
+                        </ul>
+                        <h4 style="margin-top:0.8rem;">Teaching Experience</h4>
+                        <p><strong>Years in Teaching:</strong> 2009 – present (15+ years)</p>
+                        <div class="tag-group" style="margin-top:0.4rem;">
+                            <span class="tag">Universiti Malaya</span>
+                            <span class="tag">INTAN</span>
+                            <span class="tag">UiTM</span>
+                            <span class="tag">Public Sector</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2col" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-video"></i></span> Video Assisted Learning</h3>
+                    <p>Videos are shown in lectures to help students understand the explanation of the topic. Short lectures and tutorials are recorded and shared via YouTube and ULearn.</p>
+                    <div class="tag-group">
+                        <span class="tag">YouTube Channel</span>
+                        <span class="tag">ULearn</span>
+                        <span class="tag">Video Lectures</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-coffee"></i></span> Application in Daily Life Context</h3>
+                    <p>Discussing with students easy examples of how to derive concepts from daily life activities. Encouraging students to ponder how to relate their daily life activities to the context of their learning.</p>
+                    <div class="tag-group">
+                        <span class="tag">Real-World Examples</span>
+                        <span class="tag">Contextual Learning</span>
+                        <span class="tag">Critical Thinking</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-laptop"></i></span> ULearn - Learning Outcomes &amp; Videos</h3>
+                    <p>The learning outcomes for each week's lesson are mentioned in the ULearn along with the lecture notes, tutorial questions and related video lectures to support teaching and learning in the classroom.</p>
+                    <div class="tag-group">
+                        <span class="tag">Learning Outcomes</span>
+                        <span class="tag">Lecture Notes</span>
+                        <span class="tag">Tutorials</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-edit"></i></span> ULearn - Interactive Learning</h3>
+                    <p>Interactive learning is offered in the ULearn where students can access interactive videos, use Padlet to update their learning process, and test their understanding of a topic.</p>
+                    <div class="tag-group">
+                        <span class="tag">Interactive Videos</span>
+                        <span class="tag">Padlet</span>
+                        <span class="tag">Self-Assessment</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-users"></i></span> Active Learning</h3>
+                    <p>Students upload and share their infographic notes with examples in Padlet. The activities in the classroom require students to be active and engaged in the learning process.</p>
+                    <div class="tag-group">
+                        <span class="tag">Infographic Notes</span>
+                        <span class="tag">Padlet</span>
+                        <span class="tag">Student Engagement</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-chalkboard"></i></span> Class Feedback</h3>
+                    <p>A series of short lectures on various topics. The videos duration are ranging between 2 to 15 minutes which is the ideal time for educational video.</p>
+                    <div class="tag-group">
+                        <span class="tag">Short Lectures</span>
+                        <span class="tag">Micro-Learning</span>
+                        <span class="tag">Feedback</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 5: INNOVATIONS & CREATIVITY                             -->
+        <!-- ============================================================ -->
+        <div id="innovations" class="tab-panel">
+            <div class="teaching-portfolio-header">
+                <h2>💡 Innovations &amp; Creativity</h2>
+                <p class="subtitle">"The important thing for you is to be alert, to question, to find out, so that your own initiative may be awakened." — Bruce Lee</p>
+            </div>
+            <div class="card">
+                <h3><span class="card-icon"><i class="fas fa-gamepad"></i></span> Active and Collaborative Learning: Game-Based Challenge</h3>
+                <p>Creating a dynamic environment that can inspire students to develop skills and competencies as they focus on the activities of the game.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Students play the game in groups. Each group must have a whiteboard to write down the solutions.</li>
+                    <li><i class="fas fa-check-circle"></i> Questions appear one by one on the screen within the set time limit.</li>
+                    <li><i class="fas fa-check-circle"></i> Students need to answer the questions on the board instantly.</li>
+                    <li><i class="fas fa-check-circle"></i> Marks are given based on the correct answer and the fastest.</li>
+                    <li><i class="fas fa-check-circle"></i> Prizes are waiting for the best three groups which collect the highest marks.</li>
+                </ul>
+                <div class="tag-group">
+                    <span class="tag">Game-Based Learning</span>
+                    <span class="tag">Teamwork</span>
+                    <span class="tag">Competition</span>
+                    <span class="tag">Active Participation</span>
+                </div>
+            </div>
+            <div class="grid-2col" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-puzzle-piece"></i></span> Cooperative Learning: Jigsaw Puzzles</h3>
+                    <p>Jigsaw puzzle is one of the cooperative learning activities to increase positive educational outcomes. Students work independently among themselves and self-learning is driven.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Divide students into 5-person jigsaw groups. The day's lesson is divided into 5 topics.</li>
+                        <li><i class="fas fa-check-circle"></i> Form temporary "expert groups" by having one student from each jigsaw group join other students assigned to discuss the main points of their topic.</li>
+                        <li><i class="fas fa-check-circle"></i> Bring the students back into their jigsaw groups and they have to present the topic to the group.</li>
+                        <li><i class="fas fa-check-circle"></i> At the end of the session, students are given a question to solve in their jigsaw groups.</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Jigsaw Method</span>
+                        <span class="tag">Cooperative Learning</span>
+                        <span class="tag">Peer Teaching</span>
+                        <span class="tag">Self-Learning</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-people-arrows"></i></span> Active Learning: Think-Pair-Share</h3>
+                    <p>The most method that I use in the classroom. Discussing with a partner next to you.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Maximizes participation</li>
+                        <li><i class="fas fa-check-circle"></i> Focuses attention</li>
+                        <li><i class="fas fa-check-circle"></i> Engages students in comprehending the topics</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Think-Pair-Share</span>
+                        <span class="tag">Collaboration</span>
+                        <span class="tag">Active Participation</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-tools"></i></span> Educational Tools</h3>
+                    <p>Using Kahoot, Padlet, Edpuzzle, Quizizz as teaching aids to make learning fun and provide different ways of teaching.</p>
+                    <div class="icon-list">
+                        <span><i class="fas fa-gamepad"></i> Kahoot</span>
+                        <span><i class="fas fa-edit"></i> Padlet</span>
+                        <span><i class="fas fa-video"></i> Edpuzzle</span>
+                        <span><i class="fas fa-question-circle"></i> Quizizz</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-video"></i></span> Video Assignments</h3>
+                    <p>Encouraging students with collaborative activity and increase student potential.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Encourage students to demonstrate their skills, knowledge orally in a clear, efficient and organized delivery.</li>
+                        <li><i class="fas fa-check-circle"></i> Enhance students' problem-solving abilities.</li>
+                        <li><i class="fas fa-check-circle"></i> Improve students' computer efficiency.</li>
+                        <li><i class="fas fa-check-circle"></i> Unleash students' creativity.</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Video Assignments</span>
+                        <span class="tag">Collaborative</span>
+                        <span class="tag">Creativity</span>
+                        <span class="tag">Problem-Solving</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-edit"></i></span> Padlet for Online Engagement</h3>
+                    <p>Using Padlet to increase student engagement in online classes. Framing teaching content to help and guide students in online teaching.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Satisfaction survey conducted to review students' feedback and comments.</li>
+                        <li><i class="fas fa-check-circle"></i> Results indicate that students agreed by using Padlet in online class helped them to enhance their understanding.</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Padlet</span>
+                        <span class="tag">Online Learning</span>
+                        <span class="tag">Student Engagement</span>
+                        <span class="tag">Feedback</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-robot"></i></span> AI-Enhanced Learning</h3>
+                    <p>Integrating AI tools to create engaging and personalized learning experiences for students.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Using ChatGPT, Gemini, and other AI tools to enhance teaching and learning.</li>
+                        <li><i class="fas fa-check-circle"></i> Developing AI-enhanced learning analytics dashboards.</li>
+                        <li><i class="fas fa-check-circle"></i> Exploring AI applications in education.</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">AI Literacy</span>
+                        <span class="tag">ChatGPT</span>
+                        <span class="tag">Gemini</span>
+                        <span class="tag">Learning Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 6: TEACHING FEEDBACK & REFLECTIONS                      -->
+        <!-- ============================================================ -->
+        <div id="feedback" class="tab-panel">
+            <div class="teaching-portfolio-header">
+                <h2>💬 Teaching Feedback &amp; Reflections</h2>
+                <p class="subtitle">"True teachers are those who use themselves as bridges over which they invite their students to cross..." — Nikos Kazantzakis</p>
+            </div>
+            <div class="card">
+                <h3><span class="card-icon"><i class="fas fa-star"></i></span> Student Evaluations</h3>
+                <p>Student evaluations are the main formal medium I use to improve my teaching and to meet the necessities of my students. The university has an official teaching evaluation form that is required at the end of each course.</p>
+                <div style="margin-top:0.8rem; background:rgba(245,166,35,0.08); padding:1rem 1.5rem; border-radius:1rem;">
+                    <p><strong>Recognition:</strong> I received the recognition of "mencapai kecemerlangan dalam mata pelajaran" for several semesters.</p>
+                </div>
+            </div>
+            <div class="grid-2col" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-comment"></i></span> Written Feedback from Students</h3>
+                    <p style="color:#4a638a; font-style:italic;">(Placeholder - add student testimonials here)</p>
+                    <div class="gallery-grid">
+                        <div class="gallery-item"><i class="fas fa-quote-right"></i> Testimonial 1</div>
+                        <div class="gallery-item"><i class="fas fa-quote-right"></i> Testimonial 2</div>
+                        <div class="gallery-item"><i class="fas fa-quote-right"></i> Testimonial 3</div>
+                        <div class="gallery-item"><i class="fas fa-quote-right"></i> Testimonial 4</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-users"></i></span> Feedback from Colleagues</h3>
+                    <p style="color:#4a638a; font-style:italic;">(Placeholder - add colleague testimonials here)</p>
+                    <div class="gallery-grid">
+                        <div class="gallery-item"><i class="fas fa-user-tie"></i> Colleague 1</div>
+                        <div class="gallery-item"><i class="fas fa-user-tie"></i> Colleague 2</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-chart-bar"></i></span> Teaching Evaluation Scores</h3>
+                    <p>The summary of teaching evaluation scores for several years.</p>
+                    <div style="margin-top:0.8rem; background:rgba(255,255,255,0.6); padding:1rem; border-radius:1rem; text-align:center;">
+                        <p style="font-size:2rem; font-weight:800; color:var(--accent);">4.7+</p>
+                        <p style="color:#4a638a;">Average Teaching Evaluation Score (out of 5.0)</p>
+                    </div>
+                    <div style="margin-top:0.8rem; background:rgba(255,255,255,0.6); padding:0.8rem 1rem; border-radius:1rem;">
+                        <p style="font-size:0.9rem; color:#4a638a;"><i class="fas fa-calendar-alt" style="color:var(--accent);"></i> Data for 7+ years of teaching</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-sync-alt"></i></span> Teaching Reflections</h3>
+                    <p>As I believe my students are encouraged to appreciate and always seek for knowledge, I must demonstrate the same principles. I must always have the determination to increase my knowledge in all areas of my profession as a lecturer.</p>
+                    <p style="margin-top:0.6rem;">It's a continuous challenge throughout the journey as the student's needs and technologies are changing with time. I must continue to learn new methods, techniques, approaches and skills by attending conferences and workshops on education.</p>
+                    <div style="margin-top:0.8rem; background:rgba(245,166,35,0.08); padding:0.8rem 1.2rem; border-radius:1rem; border-left:4px solid var(--accent);">
+                        <p style="font-style:italic; color:#1a2f4a;">"There are always spacious room for improvements. With this spirit, I look forward to be a better person and contribute more in creating a responsible person who appreciates knowledge in life. Teaching is my passion."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 7: ACADEMIC SUPERVISION & ADVISORY                      -->
+        <!-- ============================================================ -->
+        <div id="supervision" class="tab-panel">
+            <div class="teaching-portfolio-header">
+                <h2>👨‍🎓 Academic Supervision &amp; Advisory</h2>
+                <p class="subtitle">"I was very, very little - it was the first time I ever cooked on my own, with my mother's supervision - and I felt so accomplished, like magic!" — Gail Simmons</p>
+            </div>
+            <div class="card">
+                <h3><span class="card-icon"><i class="fas fa-user-graduate"></i></span> Postgraduate Supervision</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>PhD in Information Technology (Current)</strong> – Digital Literacy and AI Adoption in Malaysian Public Sector</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>MSc in Information Technology (Completed, 2024)</strong> – A Framework for Green End-User Computing in Malaysian Government Agencies</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>MSc in Library and Information Science (Current)</strong> – Information Management Practices and Digital Transformation in Academic Libraries</li>
+                </ul>
+                <div class="tag-group" style="margin-top:0.8rem;">
+                    <span class="tag">PhD Supervision</span>
+                    <span class="tag">MSc Supervision</span>
+                    <span class="tag">Research Methodology</span>
+                    <span class="tag">Thesis Writing</span>
+                </div>
+            </div>
+            <div class="grid-2col" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-users"></i></span> Undergraduate Supervision</h3>
+                    <p>Supervision of final year projects in data analytics, digital literacy, and information systems (4–6 students annually).</p>
+                    <div class="tag-group">
+                        <span class="tag">Final Year Projects</span>
+                        <span class="tag">Data Analytics</span>
+                        <span class="tag">Digital Literacy</span>
+                        <span class="tag">Information Systems</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-hand-holding-heart"></i></span> Advisory Roles</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Academic Advisor for undergraduate students</li>
+                        <li><i class="fas fa-check-circle"></i> Career guidance and mentoring</li>
+                        <li><i class="fas fa-check-circle"></i> Research proposal development</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Academic Advising</span>
+                        <span class="tag">Mentoring</span>
+                        <span class="tag">Career Guidance</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-tasks"></i></span> Supervision Responsibilities</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Proposal Development</li>
+                        <li><i class="fas fa-check-circle"></i> Research Methodology</li>
+                        <li><i class="fas fa-check-circle"></i> Data Collection &amp; Analysis</li>
+                        <li><i class="fas fa-check-circle"></i> Academic Writing</li>
+                        <li><i class="fas fa-check-circle"></i> Publication Preparation</li>
+                        <li><i class="fas fa-check-circle"></i> Ethical Considerations</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Proposal Development</span>
+                        <span class="tag">Research Methodology</span>
+                        <span class="tag">Academic Writing</span>
+                        <span class="tag">Ethics</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-users-cog"></i></span> Supervision Outcomes</h3>
+                    <p style="font-style:italic; color:#4a638a;">(Placeholder - add supervision outcomes and achievements here)</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Completed theses</li>
+                        <li><i class="fas fa-check-circle"></i> Publications from student research</li>
+                        <li><i class="fas fa-check-circle"></i> Conference presentations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 8: CONSULTATIONS, PUBLICATIONS & AWARDS                 -->
+        <!-- ============================================================ -->
+        <div id="consultations" class="tab-panel">
+            <div class="teaching-portfolio-header">
+                <h2>🤝 Consultations, Publications &amp; Awards</h2>
+                <p class="subtitle">"True teachers are those who use themselves as bridges over which they invite their students to cross..." — Nikos Kazantzakis</p>
+            </div>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-file-alt"></i></span> Publications</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Journal Articles (Scopus-indexed)</li>
+                        <li><i class="fas fa-check-circle"></i> Conference Proceedings</li>
+                        <li><i class="fas fa-check-circle"></i> Book Chapters</li>
+                        <li><i class="fas fa-check-circle"></i> Technical Reports</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Scopus</span>
+                        <span class="tag">WoS</span>
+                        <span class="tag">Conference</span>
+                        <span class="tag">Book Chapter</span>
+                    </div>
+                    <div style="margin-top:0.8rem;">
+                        <div class="download-item"><i class="fas fa-file-pdf"></i> Publication List <span style="color:#4a638a; font-size:0.75rem;">(Coming soon)</span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-book"></i></span> Teaching Modules</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Data Analytics Module</li>
+                        <li><i class="fas fa-check-circle"></i> Digital Literacy Module</li>
+                        <li><i class="fas fa-check-circle"></i> AI Literacy Module</li>
+                        <li><i class="fas fa-check-circle"></i> ICT Project Management Module</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Module Development</span>
+                        <span class="tag">Curriculum Design</span>
+                        <span class="tag">Teaching Materials</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-handshake"></i></span> Consultations &amp; Master Trainer</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> ICT Project Management Course for Government Agencies</li>
+                        <li><i class="fas fa-check-circle"></i> Data Analytics Training for Public Sector</li>
+                        <li><i class="fas fa-check-circle"></i> AI Literacy Training for Government Officers</li>
+                        <li><i class="fas fa-check-circle"></i> Agile Project Management Training</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Consultant</span>
+                        <span class="tag">Master Trainer</span>
+                        <span class="tag">Public Sector</span>
+                        <span class="tag">Capacity Building</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-trophy"></i></span> Awards &amp; Recognition</h3>
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-award" style="color:var(--accent);"></i> Anugerah Karya Dikara</div>
+                        <div class="award-meta">INTAN, 2024</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-medal" style="color:var(--accent);"></i> Excellent Service Award (APC)</div>
+                        <div class="award-meta">JPA, 2021</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-medal" style="color:var(--accent);"></i> Bronze Award</div>
+                        <div class="award-meta">Invention, Innovation &amp; Design Exposition 2015</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-title"><i class="fas fa-star" style="color:var(--accent);"></i> Excellent Candidate Award</div>
+                        <div class="award-meta">MSc IT, UiTM (CGPA 3.87)</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-certificate"></i></span> Professional Appointments</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Penyelaras Program (Kejuruteraan Elektrik) - <em>(Placeholder)</em></li>
+                        <li><i class="fas fa-check-circle"></i> Internal Auditor UTeM since 2016 - <em>(Placeholder)</em></li>
+                        <li><i class="fas fa-check-circle"></i> Panel Penilai Teknikal Kategori Anugerah Pengajaran - <em>(Placeholder)</em></li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Program Coordinator</span>
+                        <span class="tag">Internal Auditor</span>
+                        <span class="tag">Panel Penilai</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-chalkboard"></i></span> Invited Talks &amp; Workshops</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Penceramah i-TALK InTReD'21 - <em>(Placeholder)</em></li>
+                        <li><i class="fas fa-check-circle"></i> Penceramah Kursus Asas Pengajaran dan Pembelajaran (KAP) 2022 - <em>(Placeholder)</em></li>
+                        <li><i class="fas fa-check-circle"></i> Fasilitator Kursus Mentoring &amp; Coaching Workshop - <em>(Placeholder)</em></li>
+                        <li><i class="fas fa-check-circle"></i> Educator@Virtual Learning Environment 2021 &amp; 2022 - <em>(Placeholder)</em></li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Invited Speaker</span>
+                        <span class="tag">Workshop Facilitator</span>
+                        <span class="tag">Academic Sharing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 9: RESEARCH                                             -->
+        <!-- ============================================================ -->
+        <div id="research-portfolio" class="tab-panel">
+            <div class="books-section">
+                <h4><i class="fas fa-book-open"></i> Key AI &amp; Data Science References</h4>
+                <div class="books-display">
+                    <div class="book-item">
+                        <div class="book-icon"><i class="fas fa-brain"></i></div>
+                        <div class="book-title">Artificial Intelligence: A Modern Approach</div>
+                        <div class="book-author">Russell &amp; Norvig</div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-icon"><i class="fas fa-chart-pie"></i></div>
+                        <div class="book-title">Machine Learning: A Probabilistic Perspective</div>
+                        <div class="book-author">Kevin P. Murphy</div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="book-title">Deep Learning</div>
+                        <div class="book-author">Goodfellow, Bengio &amp; Courville</div>
+                    </div>
+                </div>
+            </div>
+            <div class="research-portfolio-header">
+                <h2>🔬 Program of Research</h2>
+                <p class="subtitle">The central research inquiry for my program of research in Information Science and Digital Literacy is:</p>
+                <div class="central-query">
+                    How can we advance digital competencies, AI literacy, and sustainable computing practices to enhance organisational performance and societal well-being?
+                </div>
+                <p style="margin-top:0.8rem; font-size:0.95rem; color:#4a638a;">
+                    I address this question through three interconnected strategies:
+                </p>
+            </div>
+            <div class="strategy-diagram">
+                <div class="strategy-box">
+                    <div class="strategy-icon"><i class="fas fa-users-cog"></i></div>
+                    <div class="strategy-title">Human-Centred Digital Transformation</div>
+                    <div class="strategy-desc">Understanding how people interact with technology to design inclusive and effective digital systems.</div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-icon"><i class="fas fa-robot"></i></div>
+                    <div class="strategy-title">AI Literacy &amp; Competency Frameworks</div>
+                    <div class="strategy-desc">Developing frameworks to measure and enhance AI literacy in education and the public sector.</div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="strategy-title">Sustainable Computing &amp; Green IT</div>
+                    <div class="strategy-desc">Promoting environmentally responsible computing through virtualization and end-user practices.</div>
+                </div>
+            </div>
+            <div class="research-strategy-section">
+                <h3><i class="fas fa-users-cog"></i> 1. Human-Centred Digital Transformation</h3>
+                <div class="card" style="padding:1.5rem;">
+                    <span class="section-tag">Peer-Reviewed Publications</span>
+                    <div class="publication-list">
+                        <div class="pub-item-research">
+                            <span class="pub-num">1.</span>
+                            <div class="pub-content">
+                                <strong>Digital Literacy Framework for Public Sector Organizations in Malaysia</strong>
+                                <span class="pub-meta">Jusoh, M.Y. (2023) · PhD Thesis · UiTM</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">2.</span>
+                            <div class="pub-content">
+                                <strong>BYOD practices in the Malaysian Public Sector</strong>
+                                <span class="pub-meta">Jusoh, M.Y., Haron, H., &amp; Kaur, J. (2016) · IC-ICT4T 2016</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">3.</span>
+                            <div class="pub-content">
+                                <strong>Managing Work Activities for IT Workers using End-User Segmentation</strong>
+                                <span class="pub-meta">Jusoh, M.Y., Haryani, H., &amp; Kaur, J. (2018) · Journal of Basic and Applied Science</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">4.</span>
+                            <div class="pub-content">
+                                <strong>Transformation of BYOD Practices to Support Green Computing</strong>
+                                <span class="pub-meta">Jusoh, M.Y., Haryani, H., &amp; Kaur, J. (2018) · Int. Journal of Eng. &amp; Tech. (Scopus Q4)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.8rem;">
+                        <span class="tag">Digital Literacy</span>
+                        <span class="tag">BYOD</span>
+                        <span class="tag">Public Sector</span>
+                        <span class="tag">Digital Transformation</span>
+                        <span class="tag">ICT Governance</span>
+                    </div>
+                </div>
+            </div>
+            <div class="research-strategy-section">
+                <h3><i class="fas fa-robot"></i> 2. AI Literacy &amp; Competency Frameworks</h3>
+                <div class="card" style="padding:1.5rem;">
+                    <span class="section-tag">Peer-Reviewed Publications &amp; Reports</span>
+                    <div class="publication-list">
+                        <div class="pub-item-research">
+                            <span class="pub-num">5.</span>
+                            <div class="pub-content">
+                                <strong>Virtualization Technology to Support Green Computing Among IT Staff</strong>
+                                <span class="pub-meta">Jusoh, M.Y., Haron, H., &amp; Kaur, J. (2021) · IVIC 2021 · Lecture Notes in CS (Scopus)</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">6.</span>
+                            <div class="pub-content">
+                                <strong>Panduan Pengajaran dan Pembelajaran Secara Dalam Talian</strong>
+                                <span class="pub-meta">INTAN (2022) · Guideline for online teaching and learning</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">7.</span>
+                            <div class="pub-content">
+                                <strong>Langganan Pakej Pembelajaran INTAN-COURSERA</strong>
+                                <span class="pub-meta">Buletin DGCD Bil 1/2022 · Digital literacy initiative</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">8.</span>
+                            <div class="pub-content">
+                                <strong>Utrecht Summer School: Introduction to AI</strong>
+                                <span class="pub-meta">Utrecht University, Netherlands (July 2024) · Professional development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.8rem;">
+                        <span class="tag">AI Literacy</span>
+                        <span class="tag">Virtualization</span>
+                        <span class="tag">Digital Competency</span>
+                        <span class="tag">E-Learning</span>
+                        <span class="tag">Public Sector Training</span>
+                    </div>
+                </div>
+            </div>
+            <div class="research-strategy-section">
+                <h3><i class="fas fa-leaf"></i> 3. Sustainable Computing &amp; Green IT</h3>
+                <div class="card" style="padding:1.5rem;">
+                    <span class="section-tag">Peer-Reviewed Publications &amp; Grants</span>
+                    <div class="publication-list">
+                        <div class="pub-item-research">
+                            <span class="pub-num">9.</span>
+                            <div class="pub-content">
+                                <strong>A Framework of Green End-User Computing Through Virtualization</strong>
+                                <span class="pub-meta">Jusoh, M.Y. (2023) · PhD Thesis · UiTM</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">10.</span>
+                            <div class="pub-content">
+                                <strong>Implementation of BYOD and Virtualized Desktop in Organization</strong>
+                                <span class="pub-meta">Awang, A. &amp; Jusoh, M.Y. (2019) · Journal of Electrical Power and Electronic Systems</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">11.</span>
+                            <div class="pub-content">
+                                <strong>Work Process Bring Your Own Device to Support Green Computing</strong>
+                                <span class="pub-meta">Jusoh, M.Y., Haryani, H., &amp; Kaur, J. (2018) · Indonesian J. of EE &amp; CS (Scopus Q3)</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">12.</span>
+                            <div class="pub-content">
+                                <strong>BYOD Work Process Model To Support Green Computing</strong>
+                                <span class="pub-meta">Research Grant · UiTM GIP · RM30,000 (2016)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.8rem;">
+                        <span class="tag">Green Computing</span>
+                        <span class="tag">Sustainable IT</span>
+                        <span class="tag">Virtualization</span>
+                        <span class="tag">BYOD</span>
+                        <span class="tag">End-User Computing</span>
+                    </div>
+                </div>
+            </div>
+            <div class="research-strategy-section">
+                <h3><i class="fas fa-project-diagram"></i> Research Projects &amp; Supervision</h3>
+                <div class="card" style="padding:1.5rem; margin-bottom:1.5rem;">
+                    <span class="section-tag">Funded Projects</span>
+                    <div class="publication-list">
+                        <div class="pub-item-research">
+                            <span class="pub-num">G1</span>
+                            <div class="pub-content">
+                                <strong>BYOD Work Process Model for Green Computing</strong>
+                                <span class="pub-meta">UiTM GIP · RM30,000 · 2016</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">G2</span>
+                            <div class="pub-content">
+                                <strong>Kajian Impak Celik Digital</strong>
+                                <span class="pub-meta">BKP Grant (2024)</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">G3</span>
+                            <div class="pub-content">
+                                <strong>MaranAi – AI for Rural Community Empowerment</strong>
+                                <span class="pub-meta">Cakna Grant (2025)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding:1.5rem; margin-bottom:1.5rem;">
+                    <span class="section-tag">Consultancy &amp; Non-Funded Projects</span>
+                    <div class="publication-list">
+                        <div class="pub-item-research">
+                            <span class="pub-num">C1</span>
+                            <div class="pub-content">
+                                <strong>ICT Project Management Course for Government</strong>
+                                <span class="pub-meta">Trainer for PTPTN, DBKL, SUK Kelantan</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">C2</span>
+                            <div class="pub-content">
+                                <strong>Data Analytics Training for Public Sector</strong>
+                                <span class="pub-meta">Facilitator for JKR, MDA, UMT</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">C3</span>
+                            <div class="pub-content">
+                                <strong>Digital Heritage – Preserving Local Cultural Assets</strong>
+                                <span class="pub-meta">Collaborative project</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">C4</span>
+                            <div class="pub-content">
+                                <strong>Dashboard Surah Yusof – Interactive Data Visualization</strong>
+                                <span class="pub-meta">NLP and Power BI</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">C5</span>
+                            <div class="pub-content">
+                                <strong>AI Teaching – Integration of AI Tools in Curriculum</strong>
+                                <span class="pub-meta">Pilot project</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">C6</span>
+                            <div class="pub-content">
+                                <strong>Green Data Centre &amp; Thin Client Project</strong>
+                                <span class="pub-meta">KeTTHA (2012–2015)</span>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">C7</span>
+                            <div class="pub-content">
+                                <strong>ePBT System Implementation</strong>
+                                <span class="pub-meta">Majlis Daerah Maran (2010–2012)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding:1.5rem;">
+                    <span class="section-tag">Postgraduate Supervision</span>
+                    <div class="publication-list">
+                        <div class="pub-item-research">
+                            <span class="pub-num">S1</span>
+                            <div class="pub-content">
+                                <strong>PhD in Information Technology (Current)</strong>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">S2</span>
+                            <div class="pub-content">
+                                <strong>MSc in Information Technology (Completed, 2024)</strong>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">S3</span>
+                            <div class="pub-content">
+                                <strong>MSc in Library and Information Science (Current)</strong>
+                            </div>
+                        </div>
+                        <div class="pub-item-research">
+                            <span class="pub-num">S4</span>
+                            <div class="pub-content">
+                                <strong>Undergraduate Research Projects (4–6 students annually)</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="research-strategy-section">
+                <h3><i class="fas fa-check-circle"></i> Research Impact Summary</h3>
+                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:1rem;">
+                    <div class="card" style="padding:1.2rem; text-align:center;">
+                        <div style="font-size:2.2rem; color:var(--accent);">📄 12+</div>
+                        <div style="font-weight:700; color:var(--primary-dark);">Publications</div>
+                    </div>
+                    <div class="card" style="padding:1.2rem; text-align:center;">
+                        <div style="font-size:2.2rem; color:var(--accent);">💰 3</div>
+                        <div style="font-weight:700; color:var(--primary-dark);">Research Grants</div>
+                    </div>
+                    <div class="card" style="padding:1.2rem; text-align:center;">
+                        <div style="font-size:2.2rem; color:var(--accent);">🏆 3</div>
+                        <div style="font-weight:700; color:var(--primary-dark);">Research Awards</div>
+                    </div>
+                </div>
+                <div style="margin-top:1rem; background:rgba(255,255,255,0.8); backdrop-filter:blur(8px); border-radius:1.2rem; padding:1rem 1.5rem; border-left:4px solid var(--accent);">
+                    <p style="font-size:0.95rem; color:#1a2f4a;">
+                        <strong>📌 Research Impact Statement:</strong> My research aims to bridge digital literacy, AI capability, and data-driven approaches to enhance organisational performance and sustainability.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 10: LEADERSHIP & ADMINISTRATION (MERGED)                -->
+        <!-- ============================================================ -->
+        <div id="leadership-admin" class="tab-panel">
+            <div class="teaching-portfolio-header">
+                <h2><i class="fas fa-tasks" style="color:var(--accent);"></i> Leadership &amp; Administration</h2>
+                <p class="subtitle">"The best way to find yourself is to lose yourself in the service of others." — Mahatma Gandhi</p>
+            </div>
+            <div class="card" style="margin-bottom:1.5rem; background:linear-gradient(135deg, rgba(26,46,92,0.04), rgba(245,166,35,0.04)); border:2px solid var(--primary);">
+                <h3><span class="card-icon"><i class="fas fa-chart-pie"></i></span> Leadership &amp; Administrative Impact</h3>
+                <p>I am actively involved in academic governance, curriculum development, and quality assurance at both faculty and university levels.</p>
+                <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+                    <div style="flex:1; min-width:120px; background:rgba(255,255,255,0.7); padding:0.6rem 1rem; border-radius:1rem; text-align:center;">
+                        <div style="font-size:1.8rem; font-weight:800; color:var(--accent);">24</div>
+                        <div style="font-size:0.8rem; color:#4a638a;">Coordinator Credits</div>
+                    </div>
+                    <div style="flex:1; min-width:120px; background:rgba(255,255,255,0.7); padding:0.6rem 1rem; border-radius:1rem; text-align:center;">
+                        <div style="font-size:1.8rem; font-weight:800; color:var(--accent);">22</div>
+                        <div style="font-size:0.8rem; color:#4a638a;">Task Force Credits</div>
+                    </div>
+                    <div style="flex:1; min-width:120px; background:rgba(255,255,255,0.7); padding:0.6rem 1rem; border-radius:1rem; text-align:center;">
+                        <div style="font-size:1.8rem; font-weight:800; color:var(--accent);">5</div>
+                        <div style="font-size:0.8rem; color:#4a638a;">Membership Credits</div>
+                    </div>
+                    <div style="flex:1; min-width:120px; background:rgba(255,255,255,0.7); padding:0.6rem 1rem; border-radius:1rem; text-align:center;">
+                        <div style="font-size:1.8rem; font-weight:800; color:var(--accent);">20</div>
+                        <div style="font-size:0.8rem; color:#4a638a;">National Body Credits</div>
+                    </div>
+                </div>
+                <div style="margin-top:1rem; background:var(--card-bg); padding:0.8rem 1.2rem; border-radius:1rem; border-left:4px solid var(--accent);">
+                    <p><strong>Total Administrative Credit Load:</strong> 24 + 22 + 5 + 20 = <strong>71 credits</strong></p>
+                </div>
+            </div>
+            <div class="grid-2col" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-user-tie"></i></span> Educational Leadership</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Senior Lecturer, Universiti Malaya (2025–present)</li>
+                        <li><i class="fas fa-check-circle"></i> Training Consultant, INTAN (2019–2025)</li>
+                        <li><i class="fas fa-check-circle"></i> Special Officer for Head of IMATEC (2023–present)</li>
+                        <li><i class="fas fa-check-circle"></i> Curriculum Development &amp; Module Development</li>
+                        <li><i class="fas fa-check-circle"></i> Research Supervision</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-brain"></i></span> Professional Development</h3>
+                    <div class="tag-group">
+                        <span class="tag">Artificial Intelligence</span>
+                        <span class="tag">Data Analytics</span>
+                        <span class="tag">Digital Transformation</span>
+                        <span class="tag">Educational Technology</span>
+                        <span class="tag">Agile PM</span>
+                        <span class="tag">ISMS</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-certificate"></i></span> Professional Certifications</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Professional Technologist (Ts.) – MBOT</li>
+                        <li><i class="fab fa-google"></i> Google Certified Educator</li>
+                        <li><i class="fas fa-robot"></i> Gemini Certified Educator</li>
+                        <li><i class="fas fa-project-diagram"></i> CompTIA Project+</li>
+                        <li><i class="fas fa-shield-alt"></i> ISO/IEC 27001:2013 ISMS Internal Auditor</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-handshake"></i></span> Committees &amp; Boards</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> NBAIC – JK3 Pembangunan Bakat (2024–2025)</li>
+                        <li><i class="fas fa-check-circle"></i> PSP JPA 2021–2025 &amp; 2026–2030</li>
+                        <li><i class="fas fa-check-circle"></i> PERJASA – Committee (2010–present)</li>
+                        <li><i class="fas fa-check-circle"></i> DGCCR &amp; DGCD Working Team</li>
+                        <li><i class="fas fa-check-circle"></i> ISMS INTAN Working Team (2020–present)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" style="margin-top:1.5rem;">
+                <h3><span class="card-icon"><i class="fas fa-user-cog"></i></span> Coordinator Roles (6 roles × 4 credits = 24 credits)</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>Penyelaras Sarjana Sains Maklumat</strong> – Faculty of Arts and Social Sciences, Universiti Malaya</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Penyelaras AQC7018</strong> – Library &amp; Information Science Research Project (Postgraduate)</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Penyelaras AI</strong> – Artificial Intelligence initiatives and curriculum integration</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Penyelaras Webmaster</strong> – Department website and digital presence</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Penyelaras Program (Kejuruteraan Elektrik)</strong> – <em>(Placeholder)</em></li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Penyelaras Lain</strong> – <em>(Placeholder)</em></li>
+                </ul>
+                <div class="tag-group">
+                    <span class="tag">Academic Coordination</span>
+                    <span class="tag">Curriculum Management</span>
+                    <span class="tag">Program Leadership</span>
+                </div>
+            </div>
+            <div class="card" style="margin-top:1.5rem;">
+                <h3><span class="card-icon"><i class="fas fa-users-cog"></i></span> Task Force &amp; Committee Roles (5 roles, total 22 credits)</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>JK Kecil UMREC</strong> (Universiti Malaya Research Ethics Committee) – 6 credits</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>JK Kecil ICOLIS</strong> (International Conference on Library and Information Science) – 4 credits</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>JK Kecil IUC</strong> (International University Carnival) – 4 credits</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Taskforce AI</strong> (Faculty-level Artificial Intelligence Task Force) – 4 credits</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Taskforce Visibility</strong> (Faculty-level Research Visibility Task Force) – 4 credits</li>
+                </ul>
+                <div class="tag-group">
+                    <span class="tag">Ethics</span>
+                    <span class="tag">Conference</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">Research Visibility</span>
+                </div>
+            </div>
+            <div class="card" style="margin-top:1.5rem;">
+                <h3><span class="card-icon"><i class="fas fa-user-friends"></i></span> Memberships (5 credits)</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>MJLIS</strong> (Malaysian Journal of Library and Information Science) – Board Member – 5 credits</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>PERJASA</strong> (Persatuan Juruanalisa Sistem Sektor Awam) – Committee Member (2010–present) – <em>(Not credit-bearing)</em></li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Taman Perwira Indah Gombak Residents Association</strong> – Committee Member – <em>(Not credit-bearing)</em></li>
+                </ul>
+                <div class="tag-group">
+                    <span class="tag">Editorial Board</span>
+                    <span class="tag">Professional Association</span>
+                    <span class="tag">Community</span>
+                </div>
+            </div>
+            <div class="card" style="margin-top:1.5rem;">
+                <h3><span class="card-icon"><i class="fas fa-university"></i></span> National Body (20 credits)</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>MBOT</strong> (Malaysia Board of Technologists) – Professional Technologist (Ts.) – 20 credits</li>
+                </ul>
+                <div class="tag-group">
+                    <span class="tag">Professional Registration</span>
+                    <span class="tag">Technologist</span>
+                </div>
+            </div>
+            <div class="card" style="margin-top:1.5rem;">
+                <h3><span class="card-icon"><i class="fas fa-tasks"></i></span> Other Administrative Contributions</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>Special Officer to Head of IMATEC</strong> (INTAN) – 2023–present</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Curriculum Development &amp; Module Development</strong> – Various courses and training programmes</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Internal Auditor</strong> – ISO/IEC 27001:2013 ISMS for JPA, INSTUN, MAMPU</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Panel Penilai Teknikal</strong> – Anugerah Pengajaran (Teaching Awards) – <em>(Placeholder)</em></li>
+                </ul>
+                <div class="tag-group">
+                    <span class="tag">Curriculum Design</span>
+                    <span class="tag">Auditing</span>
+                    <span class="tag">Awards Panel</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 11: GALLERY                                             -->
+        <!-- ============================================================ -->
+        <div id="gallery" class="tab-panel">
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-chalkboard-teacher"></i></span> Teaching Activities</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item"><i class="fas fa-chalkboard"></i> Classroom</div>
+                        <div class="gallery-item"><i class="fas fa-laptop"></i> Labs</div>
+                        <div class="gallery-item"><i class="fas fa-users"></i> Presentations</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-users-cog"></i></span> Workshops</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item"><i class="fas fa-robot"></i> AI Workshops</div>
+                        <div class="gallery-item"><i class="fas fa-chart-bar"></i> Data Analytics</div>
+                        <div class="gallery-item"><i class="fas fa-project-diagram"></i> Agile PM</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-heart"></i></span> Memories</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item"><i class="fas fa-user-graduate"></i> Graduation</div>
+                        <div class="gallery-item"><i class="fas fa-award"></i> Award Ceremony</div>
+                        <div class="gallery-item"><i class="fas fa-users"></i> With Students</div>
+                        <div class="gallery-item"><i class="fas fa-hand-holding-heart"></i> Community</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="card-icon"><i class="fas fa-download"></i></span> Download Centre</h3>
+                    <div class="download-item"><i class="fas fa-file-pdf"></i> Curriculum Vitae</div>
+                    <div class="download-item"><i class="fas fa-file-pdf"></i> Teaching Philosophy Statement</div>
+                    <div class="download-item"><i class="fas fa-file-pdf"></i> Course Proforma</div>
+                    <div class="download-item"><i class="fas fa-file-pdf"></i> Assessment Rubrics</div>
+                    <div class="download-item"><i class="fas fa-file-pdf"></i> Publication List</div>
+                    <div class="download-item"><i class="fas fa-file-pdf"></i> Teaching Portfolio PDF</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PANEL 12: CONTACT                                             -->
+        <!-- ============================================================ -->
+        <div id="contact" class="tab-panel">
+            <div class="card" style="max-width: 850px; margin: 0 auto; border: none; box-shadow: none; padding: 0.5rem 0;">
+                <h2 style="font-size:1.9rem; font-weight:800; color:var(--primary-dark);"><i class="fas fa-paper-plane" style="color:var(--accent);"></i> Contact</h2>
+                <p style="color:#4a638a; margin: 0.3rem 0 1.5rem;">I welcome collaboration, mentorship, and conversations about teaching &amp; learning. Feel free to reach out via the form below or through my contact details.</p>
+                <div class="contact-links" style="margin-bottom:2rem;">
+                    <a href="mailto:myusri@um.edu.my"><i class="fas fa-envelope"></i> myusri@um.edu.my</a>
+                    <a href="mailto:yussri29@gmail.com"><i class="fas fa-envelope"></i> yussri29@gmail.com</a>
+                    <a href="#"><i class="fas fa-globe"></i> UM Expert</a>
+                    <a href="#"><i class="fab fa-google-scholar"></i> Google Scholar</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+                <div class="card" style="margin-bottom:2rem; padding:1.5rem 2rem;">
+                    <h3 style="margin-bottom:1rem;"><i class="fas fa-question-circle" style="color:var(--accent);"></i> Frequently Asked Questions</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span><i class="fas fa-graduation-cap" style="color:var(--accent); margin-right:0.5rem;"></i> What courses do you currently teach?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            I teach both postgraduate and undergraduate courses. Postgraduate: AQC7005 (Technologies for Information Management), AQC7018 (Library &amp; Information Science Research Project), AQC7011 (Web Publishing). Undergraduate: AIP3001 (Data Analytics for Information Management), AIP3002 (Data Mining for Social Sciences), AIP3003 (Data Visualization).
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span><i class="fas fa-flask" style="color:var(--accent); margin-right:0.5rem;"></i> What are your main research interests?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            My research focuses on Digital Literacy, AI Literacy, Data Analytics, Information Management, and Sustainable Computing.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span><i class="fas fa-user-graduate" style="color:var(--accent); margin-right:0.5rem;"></i> Do you supervise postgraduate students?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, I currently supervise PhD and MSc students in topics related to digital literacy, AI adoption, information management, and sustainable computing.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span><i class="fas fa-handshake" style="color:var(--accent); margin-right:0.5rem;"></i> Are you open to collaboration or consultancy?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely. I welcome research collaborations, consultancy projects, and partnerships with government agencies, universities, and industry.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span><i class="fas fa-trophy" style="color:var(--accent); margin-right:0.5rem;"></i> What awards have you received?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            I have received the Anugerah Karya Dikara (INTAN, 2024), Excellent Service Award (JPA, 2021), Bronze Award (2015), and the Excellent Candidate Award for my MSc.
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding:1.8rem 2rem;">
+                    <h3 style="margin-bottom:1rem;"><i class="fas fa-envelope" style="color:var(--accent);"></i> Send a Message</h3>
+                    <p style="color:#4a638a; margin-bottom:1.2rem;">Fill in the form below and your message will be sent directly to my email.</p>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                            <input type="text" id="name" placeholder="e.g. Ahmad Fauzi" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+                            <input type="email" id="email" placeholder="ahmad@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                            <input type="text" id="subject" placeholder="e.g. Research Collaboration" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment"></i> Message</label>
+                            <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Email</button>
+                    </form>
+                    <div style="margin-top:1rem; font-size:0.85rem; color:#4a638a; background:rgba(26,46,92,0.04); padding:0.6rem 1rem; border-radius:1rem;">
+                        <i class="fas fa-info-circle" style="color:var(--accent);"></i> This form will open your default email client with the details pre-filled.
+                    </div>
+                </div>
+                <div style="margin-top:2rem; background:rgba(255,255,255,0.8); backdrop-filter:blur(8px); padding:1.2rem 1.8rem; border-radius:2rem; border:1px solid var(--glass-border);">
+                    <p><i class="fas fa-map-pin" style="color:var(--accent); width:1.6rem;"></i> Dept. of Library &amp; Information Science, Faculty of Arts and Social Sciences, Universiti Malaya, Kuala Lumpur, Malaysia</p>
+                    <p style="margin-top:0.4rem;"><i class="fas fa-phone" style="color:var(--accent); width:1.6rem;"></i> 012-9608084</p>
+                </div>
+                <div style="margin-top:1.5rem; background:rgba(255,255,255,0.8); backdrop-filter:blur(8px); padding:1.2rem 1.8rem; border-radius:2rem; border-left:4px solid var(--accent);">
+                    <p style="font-size:0.9rem; color:#1a2f4a;"><strong>References:</strong></p>
+                    <p style="font-size:0.85rem; color:#4a638a;">Dr. Ali Fauzi Ahmad Khan – Head of Department, UM (019-3357044 · alifauzi@um.edu.my)</p>
+                    <p style="font-size:0.85rem; color:#4a638a;">Associate Professor Dr. Yanti Idayu Aspura Mohd Khalid – Dean, FASS UM (012-2819848 · yanti@um.edu.my)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- FOOTER                                                        -->
+        <!-- ============================================================ -->
+        <div class="footer-note">
+            <i class="fas fa-graduation-cap"></i> Teaching Portfolio · Ts. Dr. Mohd Yusri Jusoh
+            <span>•</span>
+            <span>Updated from CV 2026</span>
+            <span>•</span>
+            <span>Optimized for AKRI · AAN · MyRA · Promotion</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CHATBOT WIDGET                                                -->
+    <!-- ============================================================ -->
+    <div class="chatbot-widget">
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chatbot">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chatbot-container" id="chatbotContainer">
+            <div class="chatbot-header">
+                <h4><i class="fas fa-robot"></i> Portfolio Assistant</h4>
+                <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot">
+                    <div class="avatar-icon"><i class="fas fa-robot"></i></div>
+                    <div class="bubble">Hello! I'm here to help you navigate Dr. Yusri's teaching and research portfolio. Ask me about courses, research, publications, or anything else!</div>
+                </div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbotInput" placeholder="Ask a question..." />
+                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT                                                    -->
+    <!-- ============================================================ -->
+    <script>
+        // ===== TAB SWITCHING =====
+        (function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = {
+                home: document.getElementById('home'),
+                about: document.getElementById('about'),
+                'teaching-philosophy': document.getElementById('teaching-philosophy'),
+                'teaching-methods': document.getElementById('teaching-methods'),
+                innovations: document.getElementById('innovations'),
+                feedback: document.getElementById('feedback'),
+                supervision: document.getElementById('supervision'),
+                consultations: document.getElementById('consultations'),
+                'research-portfolio': document.getElementById('research-portfolio'),
+                'leadership-admin': document.getElementById('leadership-admin'),
+                gallery: document.getElementById('gallery'),
+                contact: document.getElementById('contact')
+            };
+
+            function switchTab(tabId) {
+                Object.keys(panels).forEach(key => {
+                    panels[key].classList.remove('active');
+                });
+                tabs.forEach(btn => btn.classList.remove('active'));
+
+                if (panels[tabId]) {
+                    panels[tabId].classList.add('active');
+                }
+                tabs.forEach(btn => {
+                    if (btn.dataset.tab === tabId) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            tabs.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const tabId = this.dataset.tab;
+                    if (tabId) switchTab(tabId);
+                });
+            });
+
+            const anyActive = Object.values(panels).some(p => p.classList.contains('active'));
+            if (!anyActive) switchTab('home');
+
+            console.log('✅ Teaching Portfolio · Ts. Dr. Mohd Yusri Jusoh (All menus updated)');
+        })();
+
+        // ===== CHATBOT LOGIC =====
+        (function() {
+            const toggleBtn = document.getElementById('chatbotToggle');
+            const closeBtn = document.getElementById('chatbotClose');
+            const container = document.getElementById('chatbotContainer');
+            const messagesDiv = document.getElementById('chatbotMessages');
+            const input = document.getElementById('chatbotInput');
+            const sendBtn = document.getElementById('chatbotSend');
+
+            toggleBtn.addEventListener('click', () => {
+                container.classList.toggle('open');
+                if (container.classList.contains('open')) {
+                    input.focus();
+                }
+            });
+
+            closeBtn.addEventListener('click', () => {
+                container.classList.remove('open');
+            });
+
+            function sendMessage() {
+                const text = input.value.trim();
+                if (!text) return;
+                addMessage('user', text);
+                input.value = '';
+                const response = getBotResponse(text);
+                setTimeout(() => {
+                    addMessage('bot', response);
+                }, 400);
+            }
+
+            function addMessage(sender, text) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `chatbot-message ${sender}`;
+                const avatar = document.createElement('div');
+                avatar.className = 'avatar-icon';
+                avatar.innerHTML = sender === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.textContent = text;
+                msgDiv.appendChild(avatar);
+                msgDiv.appendChild(bubble);
+                messagesDiv.appendChild(msgDiv);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+
+            function getBotResponse(input) {
+                const lower = input.toLowerCase();
+                if (lower.match(/hello|hi|hey/)) return "Hello! How can I assist you today?";
+                if (lower.match(/course|subject|teach/)) return "I teach postgraduate AQC7005, AQC7018, AQC7011 and undergraduate AIP3001, AIP3002, AIP3003.";
+                if (lower.match(/research|publication/)) return "My research focuses on Digital Literacy, AI Literacy, Data Analytics, Information Management, and Sustainable Computing.";
+                if (lower.match(/project|grant/)) return "I've led/contributed to GIP, BKP, and Cakna grants, plus consultancy projects in ICT, data analytics, and AI.";
+                if (lower.match(/about|background/)) return "I'm Ts. Dr. Mohd Yusri Jusoh, Senior Lecturer at UM with 15+ years in IT and digital transformation.";
+                if (lower.match(/admin|coordinator|task force|leadership/)) return "I hold coordinator roles (24 credits), task force roles (22 credits), memberships (5 credits), and MBOT (20 credits). Total 71 credits. I also lead committees and boards at faculty and national levels.";
+                if (lower.match(/contact|email/)) return "You can reach me at myusri@um.edu.my or phone 012-9608084.";
+                return "I'm not sure I understand. You can ask about courses, research, projects, background, leadership/admin roles, or contact.";
+            }
+
+            sendBtn.addEventListener('click', sendMessage);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        })();
+
+        // ===== FAQ ACCORDION =====
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.fa-chevron-down');
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.classList.remove('open');
+            } else {
+                answer.classList.add('open');
+                icon.classList.add('open');
+            }
+        }
+
+        // ===== CONTACT FORM - Mailto =====
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            const mailtoLink = `mailto:myusri@um.edu.my?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+            window.location.href = mailtoLink;
+            alert('Your email client will open with the pre-filled message.');
+        });
+    </script>
+</body>
+</html>
